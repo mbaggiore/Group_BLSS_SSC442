@@ -10,7 +10,8 @@ bank <- read.csv("https://raw.githubusercontent.com/jschmidt345/Group_BLSS_SSC44
 #attach(bank)
 
 #Part 1: Cleaning Factors in Bank
-factor(marital, labels=c(1, 2, 3))
+bank$marital <- factor(bank$marital, labels=c(1, 2, 3))
+# 2 == married, 3 == single, 1 == divorced
 
 
 #Part 2: Regression of balance on all other variables
