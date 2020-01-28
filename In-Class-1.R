@@ -6,7 +6,7 @@
 #   Wenquan Lai
 
 #Load bank data from github. Attached to make "bank" objects easier to work with
-bank <- read_csv("https://raw.githubusercontent.com/jschmidt345/Group_BLSS_SSC442/master/bank.csv")
+bank <- read.csv("https://raw.githubusercontent.com/jschmidt345/Group_BLSS_SSC442/master/bank.csv")
 attach(bank)
 
 #Part 1: Cleaning Factors in Bank
