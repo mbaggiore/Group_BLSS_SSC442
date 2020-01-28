@@ -10,12 +10,21 @@ bank <- read.csv("https://raw.githubusercontent.com/jschmidt345/Group_BLSS_SSC44
 #attach(bank)
 
 #Part 1: Cleaning Factors in Bank
-bank$marital <- factor(bank$marital, labels=c(1, 2, 3))
-# 2 == married, 3 == single, 1 == divorced
+#bank$marital <- factor(bank$marital, labels=c(1, 2, 3))
+# creating each dummy var
+new_marr <- bank$marital == 'married'
+new_marr1 <- bank$marital == 'single'
+new_marr2 <- bank$marital == 'divorced'
 
+
+marr <- ifelse(new_marr, new_marr, 0)
+single <- ifelse(new_marr1, new_marr1, 0)
+divorced <- ifelse(new_marr2, new_marr2, 0)
+
+# have to omit one of them, chose to omit marr
 
 #Part 2: Regression of balance on all other variables
-reg1 = lm(balance ~ age + job +marital + education + default + housing + loan 
+reg1 = lm(balance ~ age + job + single + divorced + education + default + housing + loan 
           + contact + day + month + duration  + campaign, data = bank)
 
 #Part 3: Create a nullreg to compare to reg1 in ANOVA test
@@ -25,7 +34,7 @@ anova(nullreg1, reg1)
 #Part 4: NEED TO RUN ANALYSIS THEN REMOVE VARIABLES:
 #Regression without variables not significant at the 5% level via F-test:
 
-reg1 = lm(balance ~ age + job +marital + education + default + housing + loan 
+reg1 = lm(balance ~ age + job + single + divorced + education + default + housing + loan 
           + contact + day + month + duration  + campaign, data = bank)
 
 #Part 5: Discussion
