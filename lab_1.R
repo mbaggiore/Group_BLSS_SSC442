@@ -34,7 +34,7 @@ displ_hwy_scatter_colored <- ggplot(data = data,
 
 ### Excercise 2
 
-bank_data <- read.csv('bank.csv')
+bank_data <- read.table('bank.csv')
 # default = if customer has credit in default
 # housing and loan describe if customer has mortgage or other loan already wiht bank
 
