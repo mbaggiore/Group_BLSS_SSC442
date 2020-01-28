@@ -38,4 +38,5 @@ reg1 = lm(balance ~ age + job + single + divorced + education + default + housin
           + contact + day + month + duration  + campaign, data = bank)
 
 #Part 5: Discussion
-
+# the coefficient on divorced is a negative 365, so if you are divorced, your balance is expected to be about 365 dollars less than if you were married
+# the coeff on single is 173. If single, you are expected to have a higher balance by approx 173 than if you were married
