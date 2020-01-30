@@ -33,7 +33,7 @@ abline(lm(SalePrice ~ GrLivArea, data=Ames_final))
 # Ex 2
 
 garage_reg <- lm(SalePrice ~ GarageArea, data=Ames_final)
-# the value of a garage is $268.8
+# the value of a garage is approximately $268.8
 
 multiple_reg <- lm(SalePrice ~ MSSubClass + LotFrontage + LotArea + OverallQual + OverallCond + YearBuilt + YearRemodAdd + MasVnrArea + BsmtFinSF1 + BsmtFinSF2 + 
                      BsmtUnfSF + X1stFlrSF + X2ndFlrSF +
@@ -59,6 +59,30 @@ a <- plot(multiple_reg)
 # put leverage plot answer here ***I DO NOT UNDERSTAND THIS***
 
 
+multiple_reg_interaction <- lm(SalePrice ~ MSSubClass + LotFrontage + LotArea + OverallQual + OverallCond + YearBuilt + YearRemodAdd + MasVnrArea + BsmtFinSF1 + BsmtFinSF2 + 
+                     BsmtUnfSF + (X1stFlrSF * X2ndFlrSF) +
+                     LowQualFinSF + (BsmtFullBath * BsmtHalfBath) +
+                     FullBath + HalfBath + BedroomAbvGr + KitchenAbvGr +
+                     TotRmsAbvGrd + Fireplaces + GarageYrBlt + GarageCars + GarageArea+
+                     WoodDeckSF + OpenPorchSF + EnclosedPorch + X3SsnPorch +
+                     ScreenPorch + PoolArea + MiscVal + MoSold + YrSold , data=Ames_final)
 
+b <- plot(multiple_reg_interaction)
+# neither of the interaction terms created (X1stFlrSF * X2ndFlrSF) and (BsmtFullBath * BsmtHalfBath) are statistically significant at the 5% level
+
+
+# transformations
+multiple_reg_lnsale <- lm(log(SalePrice) ~ MSSubClass + LotFrontage + LotArea + OverallQual + OverallCond + YearBuilt + YearRemodAdd + MasVnrArea + BsmtFinSF1 + BsmtFinSF2 + 
+                     BsmtUnfSF + X1stFlrSF + X2ndFlrSF +
+                     LowQualFinSF + BsmtFullBath + BsmtHalfBath +
+                     FullBath + HalfBath + BedroomAbvGr + KitchenAbvGr +
+                     TotRmsAbvGrd + Fireplaces + GarageYrBlt + GarageCars + GarageArea + 
+                     WoodDeckSF + OpenPorchSF + EnclosedPorch + X3SsnPorch +
+                     ScreenPorch + PoolArea + MiscVal + MoSold + YrSold , data=Ames_final)
+
+'
+Transformations:
+ln(saleprice) : transform SalePrice to log scale, can now interpret coefficients as % impact on saleprice
+'
 
 
