@@ -56,7 +56,7 @@ a <- plot(multiple_reg)
 
 # we do not see any glaring errors with the fit, only that there are a few outliers
 # The farthest outliers from the fit at at 1183, 524, and 1299
-# put leverage plot answer here
+# put leverage plot answer here ***I DO NOT UNDERSTAND THIS***
 
 
 

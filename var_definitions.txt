@@ -1,0 +1,40 @@
+Id : Unique ID of House, cannot be negative
+YearBuilt : Year the house was built
+BsmntUnfSF : Unifinished Basement Square Footage
+KitchenAbvGr : If kitchen is above ground
+WoodDeckSF : Square footage of wooden deck if present
+PoolArea : Area of Pool if present
+MSSubClass : Identifies the type of dwelling involved in the sale
+YearRemodAdd : Remodal Date
+TotalBasemtSf : Total Square footage of basement
+BsmntHalfBath : If basement has a half bathroom
+TotRmsAbvGrd : Total rooms above ground
+OpenPorchSF : Square footage of Open porch if present
+MiscVal : Value of misc. feature
+LotFrontage : Linear feet of street connected to property
+MasVnrArea : Masonry veneer area in square feet
+X1stFlrSF : Exterior square footage of covering on house
+Fullbath : Full bathrooms above grade 
+Fireplaces : Number of Fireplaces
+EnclosedPorch : Enclosed porch area in square feet
+MoSold : Month house was hold
+LotArea : Lot size in square feet
+BsmtFinSF1 : Type 1 finished square feet for basement
+X2ndFlrSF :  Exterior covering on house (if more than one material)
+HalfBath : Half baths above grade
+GarageYrBlt : Year the garage was built
+X3SsnPorch : Covering on porch
+YrSold : Year the house was sold
+OverallQual : Rates the overall material and finish of the house
+BsmtFinSF2 : Type 2 finished square feet
+LowQualFinSF : Low quality finished square feet (all floors)
+BedroomAbvGr :  Bedrooms above grade (does NOT include basement bedrooms)
+GarageCars : How many cars the garage can hold
+ScreenPorch : Screen porch area in square feet
+SalePrice : Price of Sale
+OverallCond : Rates the overall condition of the house 1-10
+GrLivArea : Living area sq ft 
+GarageArea : Size of garage in sq feet
+YearBuilt : The year the house was built
+BsmtFullBath : If basement has full bathrooms
+WoodDeckSf : Size of wood deck in square footage
