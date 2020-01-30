@@ -34,7 +34,7 @@ anova(nullreg1, reg1)
 #Part 4: NEED TO RUN ANALYSIS THEN REMOVE VARIABLES:
 #Regression without variables not significant at the 5% level via F-test:
 
-reg1 = lm(balance ~ age + job + single + divorced + education + default + housing + loan 
+reg1 = lm(balance ~ age + job + divorced + marr + education + default + housing + loan 
           + contact + day + month + duration  + campaign, data = bank)
 
 #Part 5: Discussion
