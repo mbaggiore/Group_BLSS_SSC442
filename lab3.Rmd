@@ -1,0 +1,96 @@
+---
+title: "Lab 3"
+author:
+- Marquise Baggiore
+- Jacob Schmidt
+- Ryan Sears
+- Wenquan Lai
+output:
+  pdf_document: default
+  fig_caption: yes
+  keep_tex: yes
+  html_document:
+    df_print: paged
+---
+
+
+```{r include = FALSE, echo = FALSE}
+library(MASS)
+library(leaps)
+library(caret)
+library(knitr)
+tinytex::install_tinytex()
+
+ames_data <- ames_data <- read.csv('ames.csv', header = TRUE, sep=',')
+data <- ames_data[, sapply(ames_data, is.integer)]
+data_om <- na.omit(data)
+
+# dropping data
+drops <- c('OverallCond', 'OverallQual')
+df <- data_om[, !(names(data_om) %in% drops)]
+
+num_obs <- nrow(df)
+train_index <- sample(num_obs, size=trunc(.5 * num_obs))
+train_data <- df[train_index, ]
+test_data <- df[-train_index, ]
+
+traincontrol <- trainControl(method='cv', number=10)
+```
+
+<br>
+<br>
+<br>
+
+```{r echo = FALSE, include=FALSE}
+# predicting sales price
+model_test <- train(SalePrice ~ ., data=test_data,
+                     method='leapForward',
+                     tuneGrid=data.frame(nvmax=3),
+                     trControl= traincontrol)
+
+sales_prediction <- predict(model_test)
+# sales prediction mean : $183703.3
+# actual saleprice mean : $185506.2
+# used 21 indepndent variables / predictors
+
+# rmse for train and test
+model_train <- train(SalePrice ~ ., data=train_data,
+                    method='leapForward',
+                    tuneGrid=data.frame(nvmax=3),
+                    trControl= traincontrol)
+rmse_train <- model_train$results['RMSE']
+# train rmse = 48348.24
+rmse_test <- model_test$results['RMSE']
+# test rmse = 38932.07
+```
+
+We arrived at this model by originally plotting our RMSE's found by using Forward Selection.
+<br>
+<br>
+We aimed to pick the max amount of regressors that gave us the minimized the RMSE. 
+<br>
+<br>
+When we applied this to our prediction, we got an estimated mean Sale Price that was very close to the actual Sale Price mean. 
+<br>
+<br>
+We then noticed the Test RMSE was much larger than the Train RMSE. This was a result of overfitting our model. 
+<br>
+<br>
+We then adjsuted the model to make sure the amount of regressors chosen did not lead to overfitting. 
+<br>
+<br>
+The end result was a very similar Sales Price mean, the difference between our estimated Sale Price Mean and Actual Sale Price Mean was $3,162.42
+<br>
+<br>
+<br>
+```{r echo = FALSE}
+df2 <- data.frame(A=mean(sales_prediction), B=mean(df$SalePrice), C=rmse_train, D=rmse_test)
+kable(df2, col.names = c('Predicted Mean Sale Price ', 'Actual Mean Sale Price ', 'Train RMSE ', 'Test RMSE'))
+```
+
+
+
+
+
+
+
