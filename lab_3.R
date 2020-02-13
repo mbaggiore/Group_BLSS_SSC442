@@ -83,21 +83,18 @@ lines(complexity_plot, rmse_plot_test, type = 'b', col='darkorange')
 
 '2.'
 # predicting sales price
-model_test <- train(SalePrice ~ ., data=test_data,
+model_train <- train(SalePrice ~ ., data=train_data,
                      method='leapForward',
                      tuneGrid=data.frame(nvmax=21),
                      trControl= traincontrol)
 
-sales_prediction <- predict(model_train)
+sales_prediction <- predict(model_train, test_data)
 # sales prediction mean : $183703.3
 # actual saleprice mean : $185506.2
 # used 21 indepndent variables / predictors
 
 # rmse for train and test
-model_train <- train(SalePrice ~ ., data=train_data,
-                    method='leapForward',
-                    tuneGrid=data.frame(nvmax=21),
-                    trControl= traincontrol)
+
 rmse_train <- model_train$results['RMSE']
 # train rmse = 48348.24
 rmse_test <- model_test$results['RMSE']
