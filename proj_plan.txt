@@ -1,0 +1,29 @@
+Group Project Plan
+
+3 / 17 / 20
+
+Using ML or linear regression:
+
+- analyze relationship between key macro variables and economic growth
+
+- independent variables : unemployment rate, cpi, t-bill rates + more
+
+- dependent variable : end of year % change in GDP
+
+- possibly base analysis around local or state level growth and macro conditions
+
+- create multiple visualizations and models
+
+- most likely use FRED as data source if we decide to not pursue local data
+
+- possibly use PCA to determine which variables we will use
+
+
+
+
+
+
+
+
+
+
